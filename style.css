@@ -1,0 +1,2135 @@
+/* ===================================================================
+   HOW I MET YOUR MOTHER - YELLOW UMBRELLA PORTFOLIO THEME
+   Candidate: Nguyễn Khánh Hoà
+   Palette: Yellow Umbrella Gold, Rich Espresso Mahogany, Crisp White, Blue French Horn
+   =================================================================== */
+
+:root {
+  /* Yellow Theme Palette */
+  --theme-yellow: #FFCC00;
+  --theme-yellow-bright: #FFE033;
+  --theme-yellow-deep: #F0B800;
+  --theme-yellow-warm: #E6A800;
+  --theme-yellow-soft: #FFF9E6;
+
+  /* Typography / High Contrast Text */
+  --text-dark: #160509;
+  --text-main: #220B10;
+  --text-body: #3A1720;
+  --text-muted: #5E2B38;
+  --text-white: #FFFFFF;
+
+  /* Card and Container Backgrounds */
+  --card-white: #FFFFFF;
+  --card-warm: #FFFDF7;
+  --card-border-gold: #E5B000;
+  --card-shadow: 0 10px 30px rgba(100, 60, 0, 0.15), 0 2px 8px rgba(0,0,0,0.06);
+
+  /* MacLaren's Pub Dark Contrast Elements */
+  --pub-dark: #19060B;
+  --pub-mahogany: #250A11;
+  --pub-card: #2E0E16;
+  --pub-border: #4D1823;
+  --pub-accent-red: #D91E2A;
+
+  /* Show Accents */
+  --horn-blue: #0077CC;
+  --neon-cyan: #00E5FF;
+  --neon-pink: #E60067;
+  --gold-accent: #B38600;
+
+  /* Fonts */
+  --font-sitcom-title: 'Montserrat', 'Bungee', sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'Courier Prime', monospace;
+  --font-marker: 'Permanent Marker', cursive;
+  --font-body: 'Montserrat', sans-serif;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+}
+
+/* Suit Up Theme Override (Barney Laser Tag Mode) */
+body.suit-up-mode {
+  --theme-yellow: #0A0F24;
+  --theme-yellow-bright: #121B40;
+  --theme-yellow-deep: #050814;
+  --text-dark: #FFFFFF;
+  --text-main: #F0F4FF;
+  --text-body: #D1D9F0;
+  --text-muted: #9AA8CC;
+  --card-white: #131A36;
+  --card-warm: #182247;
+  --card-border-gold: #00E5FF;
+  --card-shadow: 0 10px 30px rgba(0, 229, 255, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--theme-yellow);
+  background-image: 
+    radial-gradient(circle at 10% 15%, rgba(255, 255, 255, 0.4) 0%, transparent 40%),
+    radial-gradient(circle at 90% 75%, rgba(230, 168, 0, 0.5) 0%, transparent 50%),
+    linear-gradient(180deg, #FFD200 0%, #F5B800 100%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.012) 0, rgba(0,0,0,0.012) 2px, transparent 0, transparent 8px);
+  background-attachment: fixed;
+  color: var(--text-body);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 92%;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* Helper Classes */
+.yellow-highlight {
+  color: #FFD200;
+  text-shadow: 2px 2px 0 #000, 0 0 20px rgba(255, 210, 0, 0.8);
+}
+
+.text-title-accent {
+  color: #B38600;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.6);
+}
+
+body.suit-up-mode .text-title-accent {
+  color: #00E5FF;
+  text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* ===================================================================
+   1. SITCOM EPISODE REAL VIDEO INTRO OVERLAY
+   =================================================================== */
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(circle at center, #1E0A10 0%, #080204 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.tv-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  z-index: 10001;
+  opacity: 0.7;
+}
+
+.intro-card {
+  position: relative;
+  max-width: 780px;
+  width: 92%;
+  background: rgba(28, 9, 14, 0.94);
+  border: 4px solid var(--theme-yellow);
+  border-radius: var(--radius-lg);
+  padding: 35px 28px;
+  text-align: center;
+  box-shadow: 0 0 60px rgba(255, 204, 0, 0.4), inset 0 0 30px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10002;
+  animation: intro-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes intro-pop {
+  from { opacity: 0; transform: scale(0.88); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.retro-badge {
+  display: inline-block;
+  background: var(--pub-accent-red);
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  box-shadow: 0 0 15px rgba(217, 30, 42, 0.7);
+}
+
+.narrator-bubble {
+  background: #110508;
+  border: 2px dashed var(--theme-yellow);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  font-family: var(--font-serif);
+  color: #FFECA8;
+}
+
+.narrator-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.narrator-text {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.real-preview-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.preview-cast-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.preview-cast-thumb img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--theme-yellow);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  transition: transform 0.2s;
+}
+
+.preview-cast-thumb .thumb-khanhhoa {
+  border-color: #00E5FF;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+  width: 68px;
+  height: 68px;
+}
+
+.thumb-label {
+  font-family: var(--font-sitcom-title);
+  font-size: 0.62rem;
+  letter-spacing: 0.5px;
+  color: #FFE699;
+}
+
+.sitcom-screen-text {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #E2B6C0;
+  letter-spacing: 1px;
+  margin: 6px 0 14px 0;
+}
+
+.intro-big-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 2.7rem;
+  letter-spacing: 1px;
+  line-height: 1.15;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-shadow: 3px 3px 0 #000, 0 0 25px rgba(255, 204, 0, 0.5);
+}
+
+.intro-sub {
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: #E0C0C7;
+  margin-bottom: 24px;
+}
+
+.btn-sitcom-start {
+  background: linear-gradient(135deg, #FFE600 0%, #FF9500 100%);
+  color: #160509;
+  border: none;
+  font-family: var(--font-sitcom-title);
+  font-size: 1.1rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 16px 34px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(255, 149, 0, 0.6), 0 0 25px rgba(255, 204, 0, 0.8);
+  transition: all 0.25s ease;
+  animation: pulse-glow 1.5s infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% { transform: scale(1); box-shadow: 0 5px 20px rgba(255, 149, 0, 0.6); }
+  100% { transform: scale(1.04); box-shadow: 0 10px 35px rgba(255, 204, 0, 0.9); }
+}
+
+.btn-sitcom-start:hover {
+  transform: scale(1.06);
+  background: linear-gradient(135deg, #FFF 0%, #FFD200 100%);
+}
+
+.intro-tip {
+  margin-top: 14px;
+  font-size: 0.85rem;
+  color: #FFAEBC;
+}
+
+/* ===================================================================
+   AUTHENTIC VIDEO INTRO PLAYER & EPISODE TRANSITION
+   =================================================================== */
+.intro-video-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  z-index: 10003;
+}
+
+.video-player-frame {
+  position: relative;
+  width: 92%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border: 4px solid var(--theme-yellow);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 40px rgba(255, 204, 0, 0.4);
+}
+
+.himym-actual-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.video-overlay-banner {
+  position: absolute;
+  top: 14px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.network-tag {
+  background: #D91E2A;
+  color: #FFF;
+  font-family: var(--font-sitcom-title);
+  font-size: 0.7rem;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 1px;
+}
+
+.show-tag {
+  background: rgba(0,0,0,0.65);
+  color: var(--theme-yellow);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Episode Title Screen Transition */
+.episode-title-screen {
+  position: absolute;
+  inset: 0;
+  background: #0D0407;
+  border: 4px solid var(--theme-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10004;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.episode-title-box {
+  text-align: center;
+  max-width: 720px;
+  padding: 30px;
+}
+
+.himym-real-logo-img {
+  max-width: 240px;
+  width: 60%;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 20px rgba(255,204,0,0.7));
+}
+
+.episode-badge-tag {
+  font-family: var(--font-sitcom-title);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: #D91E2A;
+  margin-bottom: 8px;
+}
+
+.episode-name {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 2.2rem;
+  color: #FFF;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-shadow: 2px 2px 0 #000, 0 0 20px rgba(255,204,0,0.5);
+}
+
+.episode-starring {
+  font-family: var(--font-sitcom-title);
+  font-size: 1.15rem;
+  color: var(--theme-yellow);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.episode-desc {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #E2C0C8;
+}
+
+.btn-skip-intro {
+  margin-top: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #FFF;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-family: var(--font-sitcom-title);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+  z-index: 10005;
+  transition: all 0.2s;
+}
+
+.btn-skip-intro:hover {
+  background: var(--theme-yellow);
+  color: #120508;
+  transform: translateY(-2px);
+}
+
+/* ===================================================================
+   2. NAVBAR
+   =================================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(25, 6, 11, 0.95);
+  border-bottom: 3px solid var(--theme-yellow);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 4%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  color: #FFF;
+  white-space: nowrap;
+}
+
+.brand-accent {
+  color: var(--theme-yellow);
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.6);
+}
+
+.umbrella-icon {
+  font-size: 1.5rem;
+  animation: float-umbrella 3s ease-in-out infinite;
+}
+
+@keyframes float-umbrella {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(6deg); }
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-item {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #E2CAD0;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.nav-item:hover {
+  color: var(--theme-yellow);
+  transform: translateY(-2px);
+}
+
+.nav-item.highlighted-nav {
+  color: var(--theme-yellow);
+  background: rgba(255, 204, 0, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 204, 0, 0.4);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-video-toggle, .btn-suit-toggle, .btn-lang {
+  background: var(--pub-card);
+  border: 1px solid var(--pub-border);
+  color: #FFF;
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.btn-video-toggle {
+  background: linear-gradient(135deg, #D91E2A 0%, #900C16 100%);
+  border-color: #FF6675;
+}
+
+.btn-video-toggle:hover {
+  box-shadow: 0 0 12px rgba(217, 30, 42, 0.7);
+  transform: translateY(-2px);
+}
+
+.btn-suit-toggle {
+  background: linear-gradient(135deg, #2D141C 0%, #151D3B 100%);
+  border-color: #00E5FF;
+}
+
+.btn-suit-toggle:hover {
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.5);
+}
+
+.btn-lang {
+  border-color: var(--theme-yellow);
+}
+
+.btn-mobile-menu {
+  display: none;
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+/* ===================================================================
+   3. SITCOM TICKER
+   =================================================================== */
+.sitcom-ticker {
+  background: #19060B;
+  color: var(--theme-yellow);
+  font-family: var(--font-sitcom-title);
+  font-weight: 900;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  padding: 7px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 2px solid #000;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 25px;
+  animation: ticker-slide 28s linear infinite;
+}
+
+@keyframes ticker-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===================================================================
+   4. HERO SECTION (YELLOW THEME WITH HIGH CONTRAST)
+   =================================================================== */
+.hero-section {
+  padding: 65px 0 55px 0;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.9fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.episode-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #19060B;
+  color: var(--theme-yellow);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.hero-name {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 3.8rem;
+  line-height: 1.08;
+  color: var(--text-dark);
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.name-highlight {
+  color: #990022;
+  position: relative;
+  display: inline-block;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+body.suit-up-mode .hero-name {
+  color: #FFF;
+  text-shadow: 2px 2px 0 #000;
+}
+
+body.suit-up-mode .name-highlight {
+  color: #00E5FF;
+}
+
+.sitcom-job-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.job-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+.teacher-badge {
+  background: #19060B;
+  color: var(--theme-yellow);
+  border: 2px solid #000;
+}
+
+.ielts-badge {
+  background: #005FA3;
+  color: #FFF;
+  border: 2px solid #003E6B;
+}
+
+.ftu-badge {
+  background: #B3003B;
+  color: #FFF;
+  border: 2px solid #80002A;
+}
+
+.hero-summary {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-body);
+  font-weight: 600;
+  margin-bottom: 26px;
+  background: rgba(255, 255, 255, 0.45);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--pub-accent-red);
+}
+
+body.suit-up-mode .hero-summary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #E2CAD0;
+}
+
+.hero-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.btn-action {
+  padding: 13px 22px;
+  border-radius: 40px;
+  font-family: var(--font-sitcom-title);
+  font-size: 0.9rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-legendary {
+  background: linear-gradient(135deg, #19060B 0%, #3D0E19 100%);
+  color: var(--theme-yellow);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-legendary:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.btn-high-five {
+  background: linear-gradient(135deg, #0077CC 0%, #004D85 100%);
+  color: #FFF;
+  box-shadow: 0 6px 20px rgba(0, 119, 204, 0.4);
+}
+
+.btn-high-five:hover {
+  transform: translateY(-3px) scale(1.03);
+}
+
+.btn-booth {
+  background: #FFF;
+  color: var(--text-dark);
+  border: 2px solid #19060B;
+}
+
+.btn-booth:hover {
+  background: #19060B;
+  color: var(--theme-yellow);
+}
+
+.btn-print-cv {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #5C323C;
+  color: var(--text-dark);
+}
+
+.btn-print-cv:hover {
+  background: #FFF;
+  border-color: #000;
+}
+
+/* Specs Row on Yellow Theme */
+.hero-specs-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  background: var(--card-white);
+  border: 2px solid var(--card-border-gold);
+  border-radius: var(--radius-md);
+  padding: 18px 12px;
+  box-shadow: var(--card-shadow);
+}
+
+body.suit-up-mode .hero-specs-row {
+  background: #131A36;
+  border-color: #00E5FF;
+}
+
+.spec-card {
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.suit-up-mode .spec-card {
+  border-right-color: rgba(255, 255, 255, 0.1);
+}
+
+.spec-card:last-child {
+  border-right: none;
+}
+
+.spec-number {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #B3003B;
+  line-height: 1.1;
+}
+
+body.suit-up-mode .spec-number {
+  color: #00E5FF;
+}
+
+.spec-label {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--text-dark);
+  margin-top: 4px;
+}
+
+body.suit-up-mode .spec-label {
+  color: #FFF;
+}
+
+.spec-sub {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Right Polaroid Column */
+.hero-visual-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.sitcom-polaroid-frame {
+  position: relative;
+  background: #FFF;
+  padding: 16px 16px 25px 16px;
+  border-radius: 4px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25), 0 5px 15px rgba(0,0,0,0.1);
+  transform: rotate(2deg);
+  transition: transform 0.3s ease;
+  max-width: 360px;
+  width: 100%;
+}
+
+.sitcom-polaroid-frame:hover {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.tape-strip {
+  position: absolute;
+  top: -14px;
+  left: 35%;
+  width: 90px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transform: rotate(-3deg);
+  backdrop-filter: blur(2px);
+}
+
+.polaroid-photo-box {
+  background: #110508;
+  border-radius: 3px;
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+.khanhhoa-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+  filter: contrast(1.05) brightness(1.02);
+}
+
+.photo-overlay-stamp {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(18, 5, 8, 0.88);
+  border: 1.5px solid var(--theme-yellow);
+  color: #FFF;
+  padding: 5px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+.stamp-title {
+  font-family: var(--font-sitcom-title);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--theme-yellow);
+}
+
+.stamp-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #E2D1D5;
+}
+
+.polaroid-bottom {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.polaroid-handwriting {
+  font-family: var(--font-marker);
+  font-size: 1.15rem;
+  color: #1E0A10;
+}
+
+.polaroid-date {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #777;
+}
+
+/* Barney Chalkboard with Real Photo */
+.chalkboard-card {
+  background: #172A1B;
+  border: 8px solid #8B5A2B;
+  border-radius: 6px;
+  padding: 16px 20px;
+  color: #FFF;
+  max-width: 380px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.chalkboard-card.with-real-barney {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.chalkboard-avatar {
+  flex-shrink: 0;
+}
+
+.real-barney-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 20%;
+  border: 2px solid var(--theme-yellow);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.chalkboard-content {
+  flex-grow: 1;
+}
+
+.chalk-title {
+  font-family: var(--font-sitcom-title);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #FFE699;
+  margin-bottom: 6px;
+}
+
+.chalk-quote {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #F0FFF0;
+  line-height: 1.4;
+}
+
+/* ===================================================================
+   5. GENERAL SECTION STYLING (ON YELLOW BACKGROUND)
+   =================================================================== */
+.section {
+  padding: 85px 0;
+  position: relative;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 50px auto;
+}
+
+.section-tag-pill {
+  display: inline-block;
+  background: #19060B;
+  color: var(--theme-yellow);
+  font-family: var(--font-sitcom-title);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-weight: 900;
+  font-size: 2.8rem;
+  line-height: 1.15;
+  color: var(--text-dark);
+  margin-bottom: 14px;
+}
+
+body.suit-up-mode .section-title {
+  color: #FFF;
+}
+
+.section-lead {
+  font-size: 1.15rem;
+  color: var(--text-body);
+  font-weight: 600;
+}
+
+/* ===================================================================
+   6. 2025 TEACHING ARC (EXPERIENCE SECTION)
+   =================================================================== */
+.milestone-card {
+  background: var(--card-white);
+  border: 3px solid var(--card-border-gold);
+  border-radius: var(--radius-lg);
+  padding: 35px 30px;
+  box-shadow: var(--card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+body.suit-up-mode .milestone-card {
+  background: #131A36;
+  border-color: #00E5FF;
+}
+
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, #D91E2A, var(--theme-yellow), #0077CC);
+}
+
+.milestone-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #F0E0B0;
+}
+
+body.suit-up-mode .milestone-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.role-badge {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.role-icon {
+  font-size: 2.5rem;
+  background: var(--theme-yellow-soft);
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--theme-yellow);
+}
+
+.role-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+body.suit-up-mode .role-title {
+  color: #FFF;
+}
+
+.role-time {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #B3003B;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+body.suit-up-mode .role-time {
+  color: #00E5FF;
+}
+
+.suit-up-tag {
+  background: #D91E2A;
+  color: #FFF;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(217, 30, 42, 0.4);
+}
+
+.experience-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 22px;
+  margin-bottom: 30px;
+}
+
+.pillar-card {
+  background: var(--card-warm);
+  border: 1px solid #E6CA65;
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+body.suit-up-mode .pillar-card {
+  background: #182247;
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.pillar-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-color: var(--text-dark);
+}
+
+.pillar-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.pillar-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 10px;
+}
+
+body.suit-up-mode .pillar-card h4 {
+  color: #FFF;
+}
+
+.pillar-card p {
+  font-size: 0.9rem;
+  color: var(--text-body);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+body.suit-up-mode .pillar-card p {
+  color: #CBD5E1;
+}
+
+.pillar-tag {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #990022;
+  font-weight: 800;
+}
+
+body.suit-up-mode .pillar-tag {
+  color: #00E5FF;
+}
+
+.quote-callout {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #FFF8D6;
+  border-left: 5px solid #D4A000;
+  padding: 18px 22px;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-size: 0.95rem;
+  color: #381A05;
+  font-weight: 600;
+}
+
+body.suit-up-mode .quote-callout {
+  background: rgba(0, 229, 255, 0.1);
+  border-left-color: #00E5FF;
+  color: #E2CAD0;
+}
+
+.callout-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+/* ===================================================================
+   7. THE PLAYBOOK (ACHIEVEMENTS)
+   =================================================================== */
+.laser-tag-scoreboard {
+  background: radial-gradient(circle at center, #1B244A 0%, #0B0E21 100%);
+  border: 4px solid #00E5FF;
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35), 0 0 30px rgba(0, 229, 255, 0.3);
+  margin-bottom: 40px;
+}
+
+.score-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.trophy-pulse {
+  font-size: 2rem;
+  animation: trophy-bounce 1s infinite alternate;
+}
+
+@keyframes trophy-bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-6px); }
+}
+
+.score-banner-title {
+  font-family: var(--font-sitcom-title);
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: #00E5FF;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+.ielts-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.ielts-skill-card {
+  background: rgba(14, 19, 43, 0.85);
+  border: 2px solid #28376E;
+  border-radius: var(--radius-md);
+  padding: 22px 18px;
+  text-align: center;
+  transition: all 0.25s;
+}
+
+.ielts-skill-card:hover {
+  transform: translateY(-4px);
+  border-color: #00E5FF;
+}
+
+.ielts-skill-card.highlight-perfect {
+  background: linear-gradient(180deg, rgba(255, 204, 0, 0.25) 0%, rgba(14, 19, 43, 0.95) 100%);
+  border: 3px solid var(--theme-yellow);
+  box-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
+  transform: scale(1.04);
+}
+
+.crown-badge {
+  background: var(--theme-yellow);
+  color: #000;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.skill-star {
+  font-size: 0.75rem;
+  color: #00E5FF;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.skill-name {
+  font-family: var(--font-sitcom-title);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #FFF;
+}
+
+.skill-score {
+  font-family: var(--font-serif);
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--theme-yellow);
+  line-height: 1;
+  margin: 10px 0 2px 0;
+  text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+}
+
+.skill-max {
+  font-size: 0.85rem;
+  color: #8892B0;
+  margin-bottom: 12px;
+}
+
+.skill-desc {
+  font-size: 0.8rem;
+  color: #CBD5E1;
+  line-height: 1.4;
+}
+
+/* Competitions Grid */
+.competitions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.contest-card {
+  background: var(--card-white);
+  border: 2px solid var(--card-border-gold);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: var(--card-shadow);
+  transition: all 0.25s;
+}
+
+body.suit-up-mode .contest-card {
+  background: #131A36;
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.contest-card:hover {
+  transform: translateY(-3px);
+  border-color: #000;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.medal-icon {
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+
+.contest-level {
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: #990022;
+  margin-bottom: 4px;
+}
+
+body.suit-up-mode .contest-level {
+  color: #00E5FF;
+}
+
+.contest-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+body.suit-up-mode .contest-title {
+  color: #FFF;
+}
+
+.contest-subject {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ===================================================================
+   8. EDUCATION & SKILLS
+   =================================================================== */
+.edu-skills-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.col-heading {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #19060B;
+}
+
+body.suit-up-mode .col-heading {
+  color: #FFF;
+  border-bottom-color: #00E5FF;
+}
+
+.edu-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edu-card {
+  background: var(--card-white);
+  border: 2px solid var(--card-border-gold);
+  border-radius: var(--radius-md);
+  padding: 22px;
+  position: relative;
+  box-shadow: var(--card-shadow);
+}
+
+body.suit-up-mode .edu-card {
+  background: #131A36;
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.edu-badge {
+  display: inline-block;
+  background: #19060B;
+  color: var(--theme-yellow);
+  font-family: var(--font-sitcom-title);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 3px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.edu-school {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+body.suit-up-mode .edu-school {
+  color: #FFF;
+}
+
+.edu-major {
+  font-size: 0.95rem;
+  color: #B3003B;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+body.suit-up-mode .edu-major {
+  color: #00E5FF;
+}
+
+.edu-details {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+/* Skills List */
+.sitcom-skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.skill-item {
+  background: var(--card-white);
+  border: 2px solid var(--card-border-gold);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: var(--card-shadow);
+}
+
+body.suit-up-mode .skill-item {
+  background: #131A36;
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.skill-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+body.suit-up-mode .skill-title {
+  color: #FFF;
+}
+
+.skill-percent {
+  font-family: var(--font-mono);
+  font-weight: 900;
+  color: #990022;
+}
+
+body.suit-up-mode .skill-percent {
+  color: #00E5FF;
+}
+
+.progress-bar {
+  height: 9px;
+  background: #E8D9A8;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fill-english { background: linear-gradient(90deg, #D91E2A, #FF9500); }
+.fill-teaching { background: linear-gradient(90deg, #0077CC, #00B4D8); }
+.fill-office { background: linear-gradient(90deg, #990022, #D91E2A); }
+.fill-attitude { background: linear-gradient(90deg, #10B981, #059669); }
+
+.skill-note {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ===================================================================
+   9. BARNEY'S PLAYBOOK
+   =================================================================== */
+.playbook-box {
+  background: #FFFFFF;
+  border: 4px dashed #19060B;
+  border-radius: var(--radius-lg);
+  padding: 40px 30px;
+  box-shadow: var(--card-shadow);
+}
+
+body.suit-up-mode .playbook-box {
+  background: #131A36;
+  border-color: #00E5FF;
+}
+
+.playbook-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.playbook-tag {
+  background: #D91E2A;
+  color: #FFF;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.playbook-header h3 {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: var(--text-dark);
+}
+
+body.suit-up-mode .playbook-header h3 {
+  color: #FFF;
+}
+
+.plays-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.play-card {
+  background: #FFFDF7;
+  border: 2px solid var(--card-border-gold);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  transition: transform 0.2s;
+}
+
+body.suit-up-mode .play-card {
+  background: #182247;
+  border-color: rgba(0, 229, 255, 0.4);
+}
+
+.play-card:hover {
+  transform: translateY(-4px);
+  border-color: #000;
+}
+
+.play-num {
+  font-family: var(--font-sitcom-title);
+  font-size: 0.75rem;
+  color: #B3003B;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+body.suit-up-mode .play-num {
+  color: #00E5FF;
+}
+
+.play-card h4 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--text-dark);
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+body.suit-up-mode .play-card h4 {
+  color: #FFF;
+}
+
+.play-card p {
+  font-size: 0.88rem;
+  color: var(--text-body);
+  line-height: 1.5;
+}
+
+/* ===================================================================
+   10. CONTACT SECTION (MACLAREN'S PUB)
+   =================================================================== */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 40px;
+}
+
+.contact-info-card {
+  background: var(--pub-card);
+  border: 3px solid var(--theme-yellow);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+  color: #FFF;
+}
+
+.pub-sign {
+  background: #110508;
+  border: 2px solid #D91E2A;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 25px;
+  box-shadow: 0 0 15px rgba(217, 30, 42, 0.4);
+}
+
+.pub-sign-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #FFF;
+  letter-spacing: 1px;
+}
+
+.pub-sign-sub {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--theme-yellow);
+  letter-spacing: 1px;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 25px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(18, 5, 8, 0.7);
+  border: 1px solid var(--pub-border);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  transition: all 0.2s;
+  color: #FFF;
+}
+
+.contact-item:hover {
+  border-color: var(--theme-yellow);
+  transform: translateX(4px);
+}
+
+.item-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.item-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.item-label {
+  font-size: 0.75rem;
+  color: #AAA;
+}
+
+.item-value {
+  font-size: 0.95rem;
+  color: #FFF;
+}
+
+.umbrella-slogan {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 204, 0, 0.12);
+  border-radius: var(--radius-md);
+  font-style: italic;
+  color: #FFE699;
+  font-size: 0.88rem;
+}
+
+.umbrella-large {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* Contact Form Card on Yellow Theme */
+.contact-form-card {
+  background: var(--card-white);
+  border: 3px solid var(--card-border-gold);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+}
+
+body.suit-up-mode .contact-form-card {
+  background: #131A36;
+  border-color: #00E5FF;
+}
+
+.form-title {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+body.suit-up-mode .form-title {
+  color: #FFF;
+}
+
+.form-sub {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+body.suit-up-mode .form-group label {
+  color: #FFF;
+}
+
+.form-group input, .form-group textarea {
+  background: #FFFDF7;
+  border: 2px solid #E0CE99;
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  color: var(--text-dark);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-submit-contact {
+  background: linear-gradient(135deg, #19060B 0%, #3D0E19 100%);
+  color: var(--theme-yellow);
+  border: none;
+  border-radius: 30px;
+  padding: 14px 24px;
+  font-family: var(--font-sitcom-title);
+  font-size: 0.95rem;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 10px;
+  transition: all 0.25s;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.btn-submit-contact:hover {
+  transform: translateY(-2px);
+  background: #000;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.form-feedback {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.form-feedback.success {
+  background: rgba(16, 185, 129, 0.15);
+  border: 2px solid #10B981;
+  color: #065F46;
+  font-weight: 700;
+}
+
+/* ===================================================================
+   11. MODAL (PRINTABLE CV)
+   =================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.modal-dialog {
+  background: #FFF;
+  color: #1A1A1A;
+  max-width: 840px;
+  width: 100%;
+  max-height: 90vh;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+}
+
+.modal-header {
+  background: #19060B;
+  color: #FFF;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 3px solid var(--theme-yellow);
+}
+
+.modal-title {
+  font-family: var(--font-sitcom-title);
+  font-size: 0.9rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.btn-close-modal {
+  background: none;
+  border: none;
+  color: #FFF;
+  font-size: 1.4rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-body {
+  padding: 30px;
+  overflow-y: auto;
+  line-height: 1.6;
+}
+
+.printable-cv .cv-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.printable-cv .cv-header h2 {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.printable-cv .cv-subtitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #B45309;
+  margin-bottom: 8px;
+}
+
+.printable-cv .cv-contact-row {
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.printable-cv .cv-divider {
+  border: none;
+  border-top: 2px solid #E5E7EB;
+  margin: 18px 0;
+}
+
+.printable-cv .cv-section {
+  margin-bottom: 20px;
+}
+
+.printable-cv .cv-section h3 {
+  font-size: 1rem;
+  color: #1E3A8A;
+  border-bottom: 1.5px solid #1E3A8A;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.printable-cv ul {
+  padding-left: 20px;
+}
+
+.printable-cv li {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.printable-cv .cv-item-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+.modal-footer {
+  background: #F3F4F6;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.btn-primary-action {
+  background: #1E3A8A;
+  color: #FFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-secondary-action {
+  background: #E5E7EB;
+  color: #374151;
+  border: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ===================================================================
+   12. FOOTER
+   =================================================================== */
+.footer {
+  background: #19060B;
+  border-top: 3px solid var(--theme-yellow);
+  padding: 40px 0;
+  text-align: center;
+  color: #FFF;
+}
+
+.footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--theme-yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.footer-note {
+  font-size: 0.85rem;
+  color: #BBB;
+  margin-bottom: 15px;
+}
+
+.footer-meta {
+  font-size: 0.8rem;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.footer-meta a {
+  color: var(--theme-yellow);
+}
+
+/* ===================================================================
+   13. RESPONSIVE BREAKPOINTS
+   =================================================================== */
+@media (max-width: 992px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-cta-buttons {
+    justify-content: center;
+  }
+  .sitcom-job-badges {
+    justify-content: center;
+  }
+  .ielts-skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .edu-skills-layout {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #19060B;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    border-bottom: 2px solid var(--theme-yellow);
+  }
+  .nav-links.active-menu {
+    display: flex;
+  }
+  .btn-mobile-menu {
+    display: block;
+  }
+  .hero-name {
+    font-size: 2.6rem;
+  }
+  .intro-big-title {
+    font-size: 2rem;
+  }
+  .hero-specs-row {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .spec-card:nth-child(2) {
+    border-right: none;
+  }
+  .ielts-skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

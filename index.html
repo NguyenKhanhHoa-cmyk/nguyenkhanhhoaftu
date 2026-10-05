@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyễn Khánh Hoà • How I Became Legend.. Wait For It.. Dary (HIMYM Portfolio)</title>
+  <meta name="description" content="Portfolio của Nguyễn Khánh Hoà - Trợ Giảng & Giảng Viên Tiếng Anh (English Teacher & TA since 2025) - IELTS 7.5 - Theme How I Met Your Mother" />
+  <!-- Google Fonts: Bungee, Courier Prime, Montserrat, Playfair Display, Permanent Marker -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <!-- Canvas Confetti for celebratory visual effect -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body class="yellow-umbrella-theme">
+
+  <!-- ==================== 1. SITCOM EPISODE REAL VIDEO INTRO OVERLAY ==================== -->
+  <div id="intro-overlay" class="intro-overlay">
+    <div class="tv-scanlines"></div>
+
+    <!-- Screen 1: The Start Episode Clapperboard Card -->
+    <div id="intro-start-card" class="intro-card">
+      <div class="retro-badge">CBS • 2005 SITCOM SPECIAL PRESENTATION</div>
+      
+      <div class="narrator-bubble">
+        <span class="narrator-icon">🎙️</span>
+        <p class="narrator-text">
+          <strong id="intro-narrator-head">Ted Mosby (Narrator, 2030):</strong><br>
+          <span id="intro-narrator-body">"Kids, back in 2025, before I helped dozens of students conquer IELTS and university exams, a legend was born at Foreign Trade University..."</span>
+        </p>
+      </div>
+
+      <div class="intro-visual-preview">
+        <div class="sitcom-polaroid-preview real-preview-strip">
+          <div class="preview-cast-thumb">
+            <img src="khanhhoa.jpg" alt="Nguyễn Khánh Hoà" class="thumb-khanhhoa" />
+            <span class="thumb-label">NGUYỄN KHÁNH HOÀ</span>
+          </div>
+          <div class="preview-cast-thumb">
+            <img src="assets/cast_neil.jpg" alt="Barney Stinson" />
+            <span class="thumb-label">BARNEY</span>
+          </div>
+          <div class="preview-cast-thumb">
+            <img src="assets/cast_josh.jpg" alt="Ted Mosby" />
+            <span class="thumb-label">TED</span>
+          </div>
+          <div class="preview-cast-thumb">
+            <img src="assets/cast_cobie.jpg" alt="Robin Scherbatsky" />
+            <span class="thumb-label">ROBIN</span>
+          </div>
+        </div>
+        <div class="sitcom-screen-text">SEASON 2025 • EPISODE 1: "HOW I BECAME LEGEND.. WAIT FOR IT.. DARY"</div>
+      </div>
+
+      <h1 class="intro-big-title">
+        HOW I BECAME <br><span class="yellow-highlight">LEGEND.. WAIT FOR IT.. DARY</span>
+      </h1>
+      <p class="intro-sub">FEATURING <strong>NGUYỄN KHÁNH HOÀ</strong> AS THE ENGLISH TEACHER & TA</p>
+
+      <button id="btn-start-intro" class="btn-sitcom-start">
+        <span class="btn-icon">▶</span>
+        <span class="btn-text">PLAY OFFICIAL HIMYM INTRO VIDEO</span>
+        <span class="btn-sparkle">🎬</span>
+      </button>
+
+      <div class="intro-tip">
+        <span>🍿 Bật âm lượng để thưởng thức video intro mở màn chính thức trích từ phim!</span>
+      </div>
+    </div>
+
+    <!-- Screen 2: Real Video Player (Plays the authentic HIMYM opening video) -->
+    <div id="intro-video-container" class="intro-video-container hidden">
+      <div class="video-player-frame">
+        <video id="himym-actual-video" class="himym-actual-video" playsinline preload="auto">
+          <source src="himym_intro.mp4" type="video/mp4" />
+          Trình duyệt của bạn không hỗ trợ video HTML5.
+        </video>
+        <div class="video-overlay-banner">
+          <span class="network-tag">CBS ORIGINAL</span>
+          <span class="show-tag">HOW I MET YOUR MOTHER</span>
+        </div>
+      </div>
+
+      <!-- Episode Title Card (Transitions right after the intro video) -->
+      <div id="episode-title-screen" class="episode-title-screen hidden">
+        <div class="episode-title-box">
+          <img src="assets/himym_logo.png" alt="How I Met Your Mother" class="himym-real-logo-img" />
+          <div class="episode-badge-tag">SEASON 2025 • EPISODE 1</div>
+          <h2 class="episode-name">"HOW I BECAME LEGEND.. WAIT FOR IT.. DARY"</h2>
+          <div class="episode-starring">STARRING <strong>NGUYỄN KHÁNH HOÀ</strong></div>
+          <p class="episode-desc">Giảng viên & Trợ giảng Tiếng Anh • IELTS 7.5 (Reading 9.0) • Đại học Ngoại Thương</p>
+        </div>
+      </div>
+
+      <button id="btn-skip-intro" class="btn-skip-intro">BỎ QUA INTRO (VÀO TẬP PHIM) ⏩</button>
+    </div>
+  </div>
+
+  <!-- ==================== 2. NAVIGATION BAR ==================== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="brand-logo">
+        <span class="umbrella-icon">☂️</span>
+        <span class="brand-text">HOW I BECAME <span class="brand-accent">LEGEND.. WAIT FOR IT.. DARY</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#about" class="nav-item" data-lang-key="nav_about">The Gang (Giới Thiệu)</a>
+        <a href="#experience" class="nav-item highlighted-nav" data-lang-key="nav_experience">⭐ 2025 Teaching Arc (Kinh Nghiệm)</a>
+        <a href="#achievements" class="nav-item" data-lang-key="nav_achievements">The Playbook (Thành Tích)</a>
+        <a href="#education" class="nav-item" data-lang-key="nav_education">Mosby Academy (Học Vấn & Kỹ Năng)</a>
+        <a href="#contact" class="nav-item" data-lang-key="nav_contact">MacLaren's Booth (Liên Hệ)</a>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Replay Video Intro Button -->
+        <button id="btn-replay-video" class="btn-video-toggle" title="Xem lại đoạn Intro mở màn chính thức của phim">
+          <span class="video-btn-icon">🎬</span>
+          <span class="video-btn-label">INTRO VIDEO</span>
+        </button>
+
+        <!-- Suit Up / Casual Theme Toggle -->
+        <button id="btn-suit-up" class="btn-suit-toggle" title="Barney's Suit Up Mode!">
+          <span class="suit-icon">👔</span>
+          <span class="suit-label">SUIT UP!</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <button id="btn-lang-toggle" class="btn-lang" title="Chuyển đổi ngôn ngữ Việt / Anh">
+          <span id="lang-flag">🇻🇳</span> <span id="lang-code">VI</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="btn-mobile-menu" class="btn-mobile-menu" aria-label="Toggle Navigation">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 3. EPISODE MARQUEE TICKER ==================== -->
+  <div class="sitcom-ticker">
+    <div class="ticker-track">
+      <span>🟡 CBS SPECIAL: "HOW I BECAME LEGEND.. WAIT FOR IT.. DARY"</span>
+      <span>•</span>
+      <span>🌟 STARRING: NGUYỄN KHÁNH HOÀ</span>
+      <span>•</span>
+      <span>🏆 IELTS 7.5 (READING 9.0)</span>
+      <span>•</span>
+      <span>⚡ HAS WORKED AS AN ENGLISH TEACHER & TEACHER ASSISTANT SINCE 2025!</span>
+      <span>•</span>
+      <span>🎓 FOREIGN TRADE UNIVERSITY (FTU) INTERNATIONAL ECONOMICS</span>
+      <span>•</span>
+      <span>🏅 GIẢI BA HỌC SINH GIỎI TP HÀ NỘI</span>
+      <span>•</span>
+      <span>☂️ "RIGHT PLACE, RIGHT TIME, RIGHT TEACHER!"</span>
+      <span>•</span>
+      <span>👔 "LEGEN... WAIT FOR IT... DARY!"</span>
+    </div>
+  </div>
+
+  <!-- ==================== 4. HERO SECTION (TED'S LIVING ROOM & BOOTH) ==================== -->
+  <section id="hero" class="hero-section">
+    <div class="container hero-grid">
+      <!-- Left: Story Headline & Catchphrases -->
+      <div class="hero-text-col">
+        <div class="episode-tag">
+          <span class="clapper-icon">🎬</span>
+          <span data-lang-key="hero_episode_tag">SEASON 2025 • EPISODE 1: "THE NEW ENGLISH LEGEND"</span>
+        </div>
+
+        <h1 class="hero-name">
+          NGUYỄN <span class="name-highlight">KHÁNH HOÀ</span>
+        </h1>
+
+        <div class="sitcom-job-badges">
+          <span class="job-badge teacher-badge">
+            <span class="badge-icon">👩‍🏫</span>
+            <span data-lang-key="hero_role_teacher">English Teacher & TA (Since 2025)</span>
+          </span>
+          <span class="job-badge ielts-badge">
+            <span class="badge-icon">🎯</span>
+            <span>IELTS 7.5 (Reading 9.0)</span>
+          </span>
+          <span class="job-badge ftu-badge">
+            <span class="badge-icon">🏛️</span>
+            <span>FTU International Economics</span>
+          </span>
+        </div>
+
+        <p class="hero-summary" data-lang-key="hero_summary">
+          Chào mừng các bạn đến với câu chuyện của Khánh Hoà! Từ năm 2025 đến nay, mình trực tiếp làm 
+          <strong>Giảng viên & Trợ giảng Tiếng Anh (English Teacher & TA)</strong>, truyền lửa nhiệt huyết cho học viên 
+          chinh phục IELTS và các kỳ thi học sinh giỏi bằng phương pháp hiện đại, tràn đầy năng lượng và chuẩn xác như một kế hoạch trong The Playbook!
+        </p>
+
+        <!-- High-Energy Interactive Button Hub -->
+        <div class="hero-cta-buttons">
+          <button id="btn-legendary" class="btn-action btn-legendary">
+            <span class="btn-spark">⚡</span>
+            <span class="btn-text">LEGEN... WAIT FOR IT... DARY!</span>
+          </button>
+
+          <button id="btn-high-five" class="btn-action btn-high-five">
+            <span class="btn-hand">✋</span>
+            <span class="btn-text" data-lang-key="hero_btn_highfive">HIGH FIVE KHÁNH HOÀ!</span>
+          </button>
+
+          <a href="#contact" class="btn-action btn-booth">
+            <span class="btn-beer">🍻</span>
+            <span class="btn-text" data-lang-key="hero_btn_booth">MACLAREN'S BOOTH (CONTACT)</span>
+          </a>
+
+          <button id="btn-open-cv-modal" class="btn-action btn-print-cv">
+            <span class="btn-doc">📄</span>
+            <span class="btn-text" data-lang-key="hero_btn_cv">PRINT / VIEW UPDATED CV</span>
+          </button>
+        </div>
+
+        <!-- Quick Specs Badges -->
+        <div class="hero-specs-row">
+          <div class="spec-card">
+            <div class="spec-number">7.5</div>
+            <div class="spec-label">IELTS OVERALL</div>
+            <div class="spec-sub">Reading 9.0 / Listening 8.0</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-number">2025+</div>
+            <div class="spec-label" data-lang-key="spec_exp_label">TEACHING EXP</div>
+            <div class="spec-sub">Teacher & Teacher Assistant</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-number">25.75</div>
+            <div class="spec-label">THPTQG D01</div>
+            <div class="spec-sub">Tiếng Anh 9.25 / 10</div>
+          </div>
+          <div class="spec-card">
+            <div class="spec-number">103</div>
+            <div class="spec-label">HSA ĐHQGHN</div>
+            <div class="spec-sub">Tiếng Anh 44 / 50</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Real Photo of Khánh Hoà in Polaroid & Real Barney Stinson -->
+      <div class="hero-visual-col">
+        <div class="sitcom-polaroid-frame">
+          <div class="tape-strip top-tape"></div>
+          <div class="polaroid-photo-box real-photo-container">
+            <img src="khanhhoa.jpg" alt="Nguyễn Khánh Hoà - English Teacher & TA" class="khanhhoa-hero-img" />
+            <div class="photo-overlay-stamp">
+              <span class="stamp-title">FTU & TEACHING LEGEND</span>
+              <span class="stamp-sub">SINCE 2025</span>
+            </div>
+          </div>
+          <div class="polaroid-bottom">
+            <div class="polaroid-handwriting">Nguyễn Khánh Hoà • Since 2025 💛</div>
+            <div class="polaroid-date">Season 1 • Episode 1</div>
+          </div>
+        </div>
+
+        <!-- Barney's Chalkboard Quote with Real Still -->
+        <div class="chalkboard-card with-real-barney">
+          <div class="chalkboard-avatar">
+            <img src="assets/cast_neil.jpg" alt="Barney Stinson (Neil Patrick Harris)" class="real-barney-thumb" />
+          </div>
+          <div class="chalkboard-content">
+            <div class="chalk-title">📋 BARNEY STINSON'S RULE OF TEACHING:</div>
+            <p class="chalk-quote">
+              "When students are sad, I stop them from being sad and be <strong>AWESOME</strong> instead! True story."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. SECTION: 2025 TEACHING ARC (NEW WORK EXPERIENCE) ==================== -->
+  <section id="experience" class="section experience-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag-pill">💼 NEW PLOT TWIST: 2025 – PRESENT</div>
+        <h2 class="section-title">
+          THE CAREER ARC: <span class="text-title-accent">ENGLISH TEACHER & TEACHER ASSISTANT</span>
+        </h2>
+        <p class="section-lead" data-lang-key="exp_lead">
+          Bước ngoặt rực rỡ từ năm 2025: Trực tiếp đứng lớp và trợ giảng các chương trình Tiếng Anh học thuật, IELTS chuyên sâu và bồi dưỡng thi THPTQG.
+        </p>
+      </div>
+
+      <div class="experience-timeline-box">
+        <!-- Main Experience Milestone Card -->
+        <div class="milestone-card main-teaching-card">
+          <div class="milestone-header">
+            <div class="role-badge">
+              <span class="role-icon">👩‍🏫</span>
+              <div>
+                <h3 class="role-title" data-lang-key="role_main_title">Giảng Viên & Trợ Giảng Tiếng Anh (English Teacher & TA)</h3>
+                <div class="role-time">⏰ 2025 – Hiện tại (Since 2025) • Ongoing Series</div>
+              </div>
+            </div>
+            <div class="suit-up-tag">Legen-wait for it-dary Teaching!</div>
+          </div>
+
+          <div class="experience-pillars-grid">
+            <!-- Pillar 1: IELTS & Academic Mastery -->
+            <div class="pillar-card">
+              <div class="pillar-icon">🎯</div>
+              <h4 data-lang-key="pillar1_title">Luyện Thi IELTS & Học Thuật Chuyên Sâu</h4>
+              <p data-lang-key="pillar1_desc">
+                Trực tiếp chia sẻ chiến thuật làm bài thực chiến, đặc biệt là bí kíp đạt <strong>9.0 Reading tuyệt đối</strong> và 8.0 Listening. 
+                Hướng dẫn học viên phương pháp Keyword Transformation & Scanning siêu tốc.
+              </p>
+              <div class="pillar-tag">#IELTSPrep #Reading9_0 #Listening8_0</div>
+            </div>
+
+            <!-- Pillar 2: Active Learning & Classroom Energy -->
+            <div class="pillar-card">
+              <div class="pillar-icon">⚡</div>
+              <h4 data-lang-key="pillar2_title">Phương Pháp Active Learning Sôi Nổi</h4>
+              <p data-lang-key="pillar2_desc">
+                Xóa tan sự nhàm chán bằng các hoạt động tương tác, Debate, Mini-Games (Kahoot, Quizizz). 
+                Quản lý lớp học chuyên nghiệp, truyền cảm hứng để mọi học sinh đều hào hứng phát biểu.
+              </p>
+              <div class="pillar-tag">#ActiveLearning #HighEnergy #ClassroomJoy</div>
+            </div>
+
+            <!-- Pillar 3: 1-on-1 Feedback & Writing Clinic -->
+            <div class="pillar-card">
+              <div class="pillar-icon">✍️</div>
+              <h4 data-lang-key="pillar3_title">Chấm Chữa Bài Chi Tiết & Chỉnh Phát Âm</h4>
+              <p data-lang-key="pillar3_desc">
+                Chữa bài Writing theo 4 tiêu chí chuẩn khảo thí Cambridge. 
+                Luyện phát âm phản xạ 1-1 cho học viên, sửa ngữ điệu tự nhiên và hỗ trợ giải đáp thắc mắc 24/7.
+              </p>
+              <div class="pillar-tag">#WritingClinic #SpeakingFix #1on1Mentorship</div>
+            </div>
+
+            <!-- Pillar 4: Progress Tracking & Parent Support -->
+            <div class="pillar-card">
+              <div class="pillar-icon">📊</div>
+              <h4 data-lang-key="pillar4_title">Theo Dõi Tiến Độ & Đồng Hành Bền Bỉ</h4>
+              <p data-lang-key="pillar4_desc">
+                Quản lý hồ sơ năng lực từng học sinh, báo cáo định kỳ với phụ huynh và xây dựng lộ trình cá nhân hóa 
+                giúp các bạn tăng band điểm nhanh chóng sau từng khóa học.
+              </p>
+              <div class="pillar-tag">#StudentSuccess #ProgressReport #Dedication</div>
+            </div>
+          </div>
+
+          <!-- Sitcom Quote Box -->
+          <div class="quote-callout">
+            <span class="callout-icon">☂️</span>
+            <div>
+              <strong>The Yellow Umbrella Philosophy:</strong> 
+              <span data-lang-key="umbrella_quote">"Mỗi học sinh đều có một chiếc 'ô vàng' tiềm năng của riêng mình. Vai trò của người thầy là giúp các em che chở nỗi sợ hãi và tỏa sáng rực rỡ nhất dưới mọi cơn mưa thử thách!"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. SECTION: THE PLAYBOOK (ACHIEVEMENTS) ==================== -->
+  <section id="achievements" class="section playbook-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag-pill">📖 BARNEY'S SPECIAL EDITION</div>
+        <h2 class="section-title">
+          THE PLAYBOOK: <span class="text-title-accent">ACADEMIC HONORS & TEST SCORES</span>
+        </h2>
+        <p class="section-lead" data-lang-key="playbook_lead">
+          Các thành tích huyền thoại được chứng thực qua những kỳ thi chuẩn hóa khắc nghiệt nhất.
+        </p>
+      </div>
+
+      <!-- Laser Tag / Scoreboard Grid -->
+      <div class="laser-tag-scoreboard">
+        <div class="score-banner">
+          <span class="trophy-pulse">🏆</span>
+          <span class="score-banner-title">IELTS OFFICIAL SCORECARD • OVERALL 7.5</span>
+        </div>
+
+        <div class="ielts-skills-grid">
+          <!-- Reading: 9.0 Highlight -->
+          <div class="ielts-skill-card highlight-perfect">
+            <div class="crown-badge">👑 PERFECT SCORE</div>
+            <div class="skill-name">READING</div>
+            <div class="skill-score">9.0</div>
+            <div class="skill-max">/ 9.0</div>
+            <div class="skill-desc" data-lang-key="reading_badge_desc">Điểm số tuyệt đối 40/40 câu hỏi. Master đọc hiểu học thuật & phân tích tư duy phản biện.</div>
+          </div>
+
+          <!-- Listening: 8.0 -->
+          <div class="ielts-skill-card">
+            <div class="skill-star">🌟 EXCELLENT</div>
+            <div class="skill-name">LISTENING</div>
+            <div class="skill-score">8.0</div>
+            <div class="skill-max">/ 9.0</div>
+            <div class="skill-desc" data-lang-key="listening_badge_desc">Bắt trọn mọi ngữ âm, accent Anh - Mỹ - Úc và các bẫy distractors phức tạp.</div>
+          </div>
+
+          <!-- Writing: 7.0 -->
+          <div class="ielts-skill-card">
+            <div class="skill-star">✍️ ADVANCED</div>
+            <div class="skill-name">WRITING</div>
+            <div class="skill-score">7.0</div>
+            <div class="skill-max">/ 9.0</div>
+            <div class="skill-desc" data-lang-key="writing_badge_desc">Tư duy logic Task 1 & Task 2 chặt chẽ, từ vựng C1-C2 chuẩn văn phong học thuật.</div>
+          </div>
+
+          <!-- Speaking: 6.5 -->
+          <div class="ielts-skill-card">
+            <div class="skill-star">🗣️ FLUENT</div>
+            <div class="skill-name">SPEAKING</div>
+            <div class="skill-score">6.5</div>
+            <div class="skill-max">/ 9.0</div>
+            <div class="skill-desc" data-lang-key="speaking_badge_desc">Phản xạ tự tin, phát âm rõ ràng, diễn đạt ý tưởng mạch lạc và giàu cảm xúc.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards & Competitions Showcase -->
+      <div class="competitions-grid">
+        <!-- City Award -->
+        <div class="contest-card city-award">
+          <div class="medal-icon">🥉</div>
+          <div class="contest-content">
+            <div class="contest-level">HANOI CITY EXCELLENCE AWARD</div>
+            <h3 class="contest-title" data-lang-key="award_city">Giải Ba Học Sinh Giỏi Cấp Thành Phố Hà Nội</h3>
+            <p class="contest-subject">Môn Tiếng Anh (English Subject Competition)</p>
+          </div>
+        </div>
+
+        <!-- District Cluster Award -->
+        <div class="contest-card cluster-award">
+          <div class="medal-icon">🥉</div>
+          <div class="contest-content">
+            <div class="contest-level">DISTRICT CLUSTER AWARD</div>
+            <h3 class="contest-title" data-lang-key="award_cluster">Giải Ba Học Sinh Giỏi Cấp Cụm Đống Đa</h3>
+            <p class="contest-subject">Môn Tiếng Anh (Dong Da Cluster Competition)</p>
+          </div>
+        </div>
+
+        <!-- School Award -->
+        <div class="contest-card school-award">
+          <div class="medal-icon">🥈</div>
+          <div class="contest-content">
+            <div class="contest-level">HIGH SCHOOL CHAMPIONSHIP</div>
+            <h3 class="contest-title" data-lang-key="award_school">Giải Nhì Học Sinh Giỏi Cấp Trường THPT Đống Đa</h3>
+            <p class="contest-subject">Môn Tiếng Anh (Dong Da High School)</p>
+          </div>
+        </div>
+
+        <!-- THPTQG 2025 -->
+        <div class="contest-card thpt-award">
+          <div class="medal-icon">🎯</div>
+          <div class="contest-content">
+            <div class="contest-level">NATIONAL HIGH SCHOOL EXAM (THPTQG 2025)</div>
+            <h3 class="contest-title">25.75 Điểm Khối D01</h3>
+            <p class="contest-subject"><strong>Điểm Tiếng Anh: 9.25 / 10.0</strong> • Top điểm cao toàn quốc</p>
+          </div>
+        </div>
+
+        <!-- HSA Competency Exam -->
+        <div class="contest-card hsa-award">
+          <div class="medal-icon">📈</div>
+          <div class="contest-content">
+            <div class="contest-level">HSA VNU COMPETENCY ASSESSMENT</div>
+            <h3 class="contest-title">103 Điểm Năng Lực ĐHQGHN</h3>
+            <p class="contest-subject"><strong>Điểm Tiếng Anh: 44 / 50</strong> • Đánh giá tư duy toàn diện</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. SECTION: THE MOSBY ACADEMY (EDUCATION & SKILLS) ==================== -->
+  <section id="education" class="section academy-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag-pill">🏛️ PROFESSOR MOSBY'S CLASSROOM</div>
+        <h2 class="section-title">
+          EDUCATION & <span class="text-title-accent">SUPERPOWERS</span>
+        </h2>
+        <p class="section-lead" data-lang-key="edu_lead">
+          Nền tảng học vấn vững chắc tại ngôi trường kinh tế hàng đầu và bộ kỹ năng sư phạm sắc bén.
+        </p>
+      </div>
+
+      <div class="edu-skills-layout">
+        <!-- Education Column -->
+        <div class="edu-col">
+          <h3 class="col-heading">🎓 TRÌNH ĐỘ HỌC VẤN (EDUCATION)</h3>
+
+          <div class="edu-timeline">
+            <!-- FTU Card -->
+            <div class="edu-card active-edu">
+              <div class="edu-badge">2025 – NAY</div>
+              <h4 class="edu-school">Đại Học Ngoại Thương (FTU)</h4>
+              <p class="edu-major"><strong>Chuyên ngành:</strong> Kinh tế Quốc tế (International Economics)</p>
+              <p class="edu-details" data-lang-key="ftu_details">
+                Môi trường học tập năng động, rèn luyện tư duy kinh tế toàn cầu, kỹ năng đàm phán và thuyết trình bằng tiếng Anh chuyên ngành ở chuẩn mực cao nhất.
+              </p>
+            </div>
+
+            <!-- High School Card -->
+            <div class="edu-card">
+              <div class="edu-badge">TỐT NGHIỆP 2025</div>
+              <h4 class="edu-school">Trường THPT Đống Đa – Hà Nội</h4>
+              <p class="edu-major">Học sinh lớp chọn khối D • Đội tuyển Học sinh Giỏi môn Tiếng Anh</p>
+              <p class="edu-details" data-lang-key="dongda_details">
+                Đạt cú đúp giải thưởng học sinh giỏi môn Tiếng Anh cấp trường, cấp cụm và cấp Thành phố Hà Nội.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skills Column -->
+        <div class="skills-col">
+          <h3 class="col-heading">⚡ KỸ NĂNG & THẾ MẠNH (CORE SKILLS)</h3>
+
+          <div class="sitcom-skills-list">
+            <!-- Skill 1 -->
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-title">⭐ Thành Thạo Giao Tiếp & Soạn Thảo Tiếng Anh</span>
+                <span class="skill-percent">98%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-english" style="width: 98%;"></div>
+              </div>
+              <p class="skill-note" data-lang-key="skill1_note">Giao tiếp lưu loát, ghi chép và dịch thuật tài liệu học thuật chuẩn xác.</p>
+            </div>
+
+            <!-- Skill 2 -->
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-title">👩‍🏫 Kỹ Năng Truyền Đạt & Quản Lý Lớp Học</span>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-teaching" style="width: 95%;"></div>
+              </div>
+              <p class="skill-note" data-lang-key="skill2_note">Phương pháp giảng dạy lôi cuốn, tạo bầu không khí học tập tích cực và kỷ luật.</p>
+            </div>
+
+            <!-- Skill 3 -->
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-title">💻 Thành Thạo Kỹ Năng Văn Phòng & EdTech</span>
+                <span class="skill-percent">92%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-office" style="width: 92%;"></div>
+              </div>
+              <p class="skill-note" data-lang-key="skill3_note">Làm chủ Word, Excel, PowerPoint, Canva, Quizizz, Kahoot, Google Classroom.</p>
+            </div>
+
+            <!-- Skill 4 -->
+            <div class="skill-item">
+              <div class="skill-info">
+                <span class="skill-title">💛 Tinh Thần Trách Nhiệm Cao & Tận Tâm</span>
+                <span class="skill-percent">100%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill fill-attitude" style="width: 100%;"></div>
+              </div>
+              <p class="skill-note" data-lang-key="skill4_note">Chăm chỉ, chu đáo, luôn theo sát và động viên từng bước tiến của học viên.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8. SECTION: BARNEY'S PLAYBOOK TEACHING STRATEGIES ==================== -->
+  <section class="section easter-eggs-section">
+    <div class="container">
+      <div class="playbook-box">
+        <div class="playbook-header">
+          <span class="playbook-tag">🎩 THE KHÁNH HOÀ PLAYBOOK: TEACHING EDITION</span>
+          <h3>TOP 3 SECRET PLAYS FOR STUDENT SUCCESS</h3>
+        </div>
+
+        <div class="plays-grid">
+          <!-- Play 1 -->
+          <div class="play-card">
+            <div class="play-num">PLAY #01</div>
+            <h4>"The Lorenzo Von Matterhorn of Reading"</h4>
+            <p>Học sinh không đọc chay từng từ mà quét ma trận từ khóa (Scanning), giải mã bẫy Paraphrase và chinh phục 9.0 Reading như một quý tộc New York!</p>
+          </div>
+
+          <!-- Play 2 -->
+          <div class="play-card">
+            <div class="play-num">PLAY #02</div>
+            <h4>"The Yellow Umbrella Shield"</h4>
+            <p>Bảo vệ học viên khỏi nỗi sợ hãi phòng thi bằng các bài thi thử áp lực thật, sửa lỗi sai trực diện và tiếp năng lượng tích cực trước ngày G!</p>
+          </div>
+
+          <!-- Play 3 -->
+          <div class="play-card">
+            <div class="play-num">PLAY #03</div>
+            <h4>"The Suit Up! Confidence Boost"</h4>
+            <p>Tập luyện phản xạ Speaking 1-on-1 với tư thái đĩnh đạc, biến tiếng Anh từ một môn học thành một phản xạ tự nhiên đầy kiêu hãnh.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 9. SECTION: MACLAREN'S PUB BOOTH (CONTACT) ==================== -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag-pill">🍻 MACLAREN'S PUB • BOOTH #1</div>
+        <h2 class="section-title">
+          GRAB A DRINK & <span class="text-title-accent">CONNECT WITH KHÁNH HOÀ</span>
+        </h2>
+        <p class="section-lead" data-lang-key="contact_lead">
+          Bạn đang tìm một Giảng viên hay Trợ giảng Tiếng Anh giàu năng lượng, tận tâm và có kết quả kiểm chứng? Hãy để lại tin nhắn hoặc gọi ngay nhé!
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Information Card -->
+        <div class="contact-info-card">
+          <div class="pub-sign">
+            <div class="pub-sign-title">MacLaren's Pub</div>
+            <div class="pub-sign-sub">RESERVED FOR KHÁNH HOÀ & FUTURE PARTNERS</div>
+          </div>
+
+          <div class="contact-methods">
+            <!-- Phone -->
+            <a href="tel:0978974600" class="contact-item">
+              <div class="item-icon">📞</div>
+              <div class="item-details">
+                <span class="item-label" data-lang-key="phone_label">Số điện thoại / Zalo:</span>
+                <strong class="item-value">0978 974 600</strong>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:k64.2514410085@ftu.edu.vn" class="contact-item">
+              <div class="item-icon">📧</div>
+              <div class="item-details">
+                <span class="item-label">Email:</span>
+                <strong class="item-value">k64.2514410085@ftu.edu.vn</strong>
+              </div>
+            </a>
+
+            <!-- Address -->
+            <div class="contact-item">
+              <div class="item-icon">📍</div>
+              <div class="item-details">
+                <span class="item-label" data-lang-key="address_label">Địa chỉ hiện tại:</span>
+                <strong class="item-value">Chung cư Le Grand Jardin, phường Phúc Đồng, Long Biên, Hà Nội</strong>
+              </div>
+            </div>
+
+            <!-- University -->
+            <div class="contact-item">
+              <div class="item-icon">🎓</div>
+              <div class="item-details">
+                <span class="item-label" data-lang-key="school_label">Trường theo học:</span>
+                <strong class="item-value">Đại học Ngoại Thương (Foreign Trade University)</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="umbrella-slogan">
+            <span class="umbrella-large">☂️</span>
+            <p>"Timing is everything. And this is the right time to work together!"</p>
+          </div>
+        </div>
+
+        <!-- Fast Message Form -->
+        <div class="contact-form-card">
+          <h3 class="form-title" data-lang-key="form_title">📬 Gửi Lời Nhắn Đến Khánh Hoà</h3>
+          <p class="form-sub" data-lang-key="form_sub">Trao đổi về vị trí giảng dạy, trợ giảng hoặc dự án giáo dục tiếng Anh.</p>
+
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="sender-name" data-lang-key="form_name_label">Họ tên của bạn / Trung tâm:</label>
+              <input type="text" id="sender-name" placeholder="VD: British Academy / Chị Lan..." required />
+            </div>
+
+            <div class="form-group">
+              <label for="sender-contact" data-lang-key="form_contact_label">Email hoặc Số điện thoại:</label>
+              <input type="text" id="sender-contact" placeholder="VD: hr@example.com hoặc 0912..." required />
+            </div>
+
+            <div class="form-group">
+              <label for="sender-message" data-lang-key="form_msg_label">Nội dung trao đổi:</label>
+              <textarea id="sender-message" rows="4" placeholder="VD: Chúng tôi muốn mời bạn làm trợ giảng lớp IELTS..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit-contact">
+              <span class="send-icon">🚀</span>
+              <span data-lang-key="form_submit_btn">GỬI LỜI NHẮN NGAY (SEND MESSAGE)</span>
+            </button>
+          </form>
+
+          <div id="form-feedback" class="form-feedback hidden"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 10. MODAL: UPDATED CV PREVIEW & PRINT ==================== -->
+  <div id="cv-modal" class="modal-backdrop hidden">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span>📄 BẢN CV CẬP NHẬT CHÍNH THỨC • NGUYỄN KHÁNH HOÀ</span>
+        </div>
+        <button id="btn-close-modal" class="btn-close-modal">✕</button>
+      </div>
+
+      <div class="modal-body printable-cv" id="printable-cv-content">
+        <div class="cv-header">
+          <h2>NGUYỄN KHÁNH HOÀ</h2>
+          <p class="cv-subtitle">Trợ Giảng Tiếng Anh Nâng Cao / IELTS | Giảng Viên Tiếng Anh (English Teacher & TA since 2025)</p>
+          <div class="cv-contact-row">
+            <span>📞 0978 974 600</span> • 
+            <span>✉️ k64.2514410085@ftu.edu.vn</span> • 
+            <span>📍 Chung cư Le Grand Jardin, Phúc Đồng, Long Biên, Hà Nội</span>
+          </div>
+        </div>
+
+        <hr class="cv-divider">
+
+        <div class="cv-section">
+          <h3>🎯 MỤC TIÊU NGHỀ NGHIỆP</h3>
+          <p>Mang đam mê ngôn ngữ và phương pháp học tích cực để truyền cảm hứng cho học sinh, giúp các bạn nâng cao phản xạ, làm chủ 4 kỹ năng tiếng Anh và chinh phục các kỳ thi chuẩn hóa (IELTS, THPTQG, HSA) với kết quả xuất sắc nhất.</p>
+        </div>
+
+        <div class="cv-section">
+          <h3>💼 KINH NGHIỆM LÀM VIỆC</h3>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Giảng Viên & Trợ Giảng Tiếng Anh (English Teacher & Teacher Assistant)</strong>
+              <em>2025 – Hiện tại</em>
+            </div>
+            <ul>
+              <li>Trực tiếp giảng dạy và trợ giảng các lớp Tiếng Anh học thuật, Tiếng Anh giao tiếp và luyện thi IELTS.</li>
+              <li>Ứng dụng phương pháp Active Learning, lồng ghép hoạt động tương tác giúp học sinh tự tin nói tiếng Anh và ghi nhớ từ vựng sâu sắc.</li>
+              <li>Chấm chữa bài Writing chi tiết theo chuẩn tiêu chí Cambridge IELTS; hướng dẫn học sinh phương pháp tư duy và cấu trúc bài luận mạch lạc.</li>
+              <li>Luyện phát âm (Pronunciation) và phản xạ 1-1 cho học sinh, sửa lỗi ngữ điệu và phát triển ý tưởng tự nhiên.</li>
+              <li>Theo dõi sát sao tiến độ học tập, quản lý kỷ luật lớp học và báo cáo định kỳ với phụ huynh.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h3>🏆 THÀNH TÍCH NỔI BẬT</h3>
+          <ul>
+            <li><strong>IELTS Overall: 7.5</strong> (Reading: 9.0 tuyệt đối, Listening: 8.0, Writing: 7.0, Speaking: 6.5).</li>
+            <li><strong>Giải Ba Học sinh Giỏi cấp Thành phố Hà Nội</strong> môn Tiếng Anh.</li>
+            <li><strong>Giải Ba Học sinh Giỏi cấp Cụm Đống Đa</strong> môn Tiếng Anh.</li>
+            <li><strong>Giải Nhì Học sinh Giỏi cấp Trường THPT Đống Đa</strong> môn Tiếng Anh.</li>
+            <li><strong>Kỳ thi THPT Quốc gia 2025:</strong> Khối D01 đạt <strong>25.75 điểm</strong> (Môn Tiếng Anh: <strong>9.25/10.0</strong>).</li>
+            <li><strong>Kỳ thi ĐGNL HSA ĐHQGHN:</strong> Tổng <strong>103 điểm</strong> (Môn Tiếng Anh: <strong>44/50</strong>).</li>
+          </ul>
+        </div>
+
+        <div class="cv-section">
+          <h3>🎓 TRÌNH ĐỘ HỌC VẤN</h3>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Đại học Ngoại Thương (Foreign Trade University – FTU)</strong>
+              <em>2025 – Hiện tại</em>
+            </div>
+            <p>Chuyên ngành: Kinh tế Quốc tế (International Economics).</p>
+          </div>
+          <div class="cv-item">
+            <div class="cv-item-header">
+              <strong>Trường THPT Đống Đa – Hà Nội</strong>
+              <em>Tốt nghiệp 2025</em>
+            </div>
+            <p>Học sinh lớp chọn khối D • Đội tuyển Học sinh Giỏi Tiếng Anh.</p>
+          </div>
+        </div>
+
+        <div class="cv-section">
+          <h3>🌟 KỸ NĂNG</h3>
+          <p>• Thành thạo giao tiếp, ghi chép và dịch thuật bằng Tiếng Anh chuẩn mực.</p>
+          <p>• Kỹ năng truyền đạt thông tin dễ hiểu, tạo không khí học tập sôi nổi và quản lý lớp học hiệu quả.</p>
+          <p>• Thành thạo tin học văn phòng (Word, Excel, PowerPoint) và công cụ giảng dạy tương tác (Canva, Quizizz, Kahoot).</p>
+          <p>• Chăm chỉ, tỉ mỉ, có tinh thần trách nhiệm cao và luôn đồng hành tận tụy cùng học viên.</p>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-print-cv-action" class="btn-primary-action">🖨️ In / Tải PDF (Print to PDF)</button>
+        <button id="btn-close-modal-bottom" class="btn-secondary-action">Đóng (Close)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 11. FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <span class="yellow-umbrella-small">☂️</span>
+        <span>HAVE YOU MET <strong>KHÁNH HOÀ</strong>?</span>
+      </div>
+      <p class="footer-note">
+        How I Met Your Mother Sitcom Themed Portfolio • Dedicated to English Teaching Excellence & Since 2025 Legend!
+      </p>
+      <div class="footer-meta">
+        <span>© 2025 - Present Nguyễn Khánh Hoà</span>
+        <span>•</span>
+        <a href="#hero">Back to Top ⬆</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
